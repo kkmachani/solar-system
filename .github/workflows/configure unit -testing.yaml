@@ -6,7 +6,9 @@ on:
      branches:
          - main
          - 'feature/*'
-
+env:
+   $ USER_NAME: 
+   $ PASS_WORD:
 jobs:
     unit-testing:
         name: Unit-Testing
