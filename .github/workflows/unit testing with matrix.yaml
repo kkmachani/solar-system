@@ -1,4 +1,4 @@
-name: Unit Testing for NodeJS app
+name: matrix strategy for Unit Testing
 
 on:
   workflow_dispatch:
