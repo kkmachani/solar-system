@@ -27,7 +27,7 @@ jobs:
           run: npm install
         
         - name: check code coverage
-          continue-on-error: true
+          continue-on-error: true # continues the workflow even one of the job is faile
           run: npm run coverage
 
         - name: Archive Test Result
