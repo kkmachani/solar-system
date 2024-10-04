@@ -66,7 +66,7 @@ jobs:
     
     Docker:
           name: Containerization
-          needs: [unit-testing, code-coverage]
+          needs: [unit-testing]
           runs-on: ubuntu-latest
           steps:
           - name: Checkout repo
@@ -77,6 +77,14 @@ jobs:
             with:
               username: ${{ vars.DOCKER_USERNAME}}
               password: ${{ secrets.DOCKER_PASSWORD}}
+          
+          - name: Building Docker Image
+            uses: docker/build-push-action@v4
+            with:
+              context: .
+              push: false
+              tags: ${{ vars.DOCKER_USERNAME }}/solar-system:${{ github.sha }}
+
             
 
 
