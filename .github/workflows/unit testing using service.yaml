@@ -16,7 +16,7 @@ jobs:
         name: Unit-Testing
         services:
           mongo-db: 
-            image: machanikrishnakumar/solar-system
+            image: machanikrishnakumar/solar-system:e20bcc27a3ef445bb10aab1542d1fc29e2e1fa46
             ports:
               - 27017:27017
         strategy:
