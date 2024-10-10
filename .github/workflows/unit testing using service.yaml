@@ -20,7 +20,7 @@ jobs:
             ports:
               - 27017:27017
         strategy:
-          fail-fast: false
+          fail-fast: false # will continue the workflow even one job is failed
           matrix:
               nodejs_version: [18,19,20]
               operating_system: [ubuntu-latest, macos-latest]
@@ -38,7 +38,9 @@ jobs:
               node-version: ${{matrix.nodejs_version}}
 
         - name: Install Dependencies
-          run: npm install
+          run: |
+            nvm install node
+            npm install
         
         - name: Unit Testing
           run: npm test 
