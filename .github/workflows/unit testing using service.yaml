@@ -38,11 +38,9 @@ jobs:
               node-version: ${{matrix.nodejs_version}}
 
         - name: Install Dependencies
-          run: |
-            nvm install node
-            npm install
+          run:  npm install
         
         - name: Unit Testing
-          run: npm test 
+          run:  npm test 
         
 
