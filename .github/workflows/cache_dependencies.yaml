@@ -1,4 +1,4 @@
-name: Unit Testing for NodeJS app
+name: Code coverage 
 
 on:
   workflow_dispatch:
@@ -6,10 +6,7 @@ on:
      branches:
          - main
          - 'feature/*'
-env:
-   MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
-   MONGO_USERNAME: ${{vars.MONGO_USERNAME}}
-   MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
+
 jobs:
     unit-testing:
         name: Unit-Testing
@@ -25,15 +22,6 @@ jobs:
 
         - name: Install Dependencies
           run: npm install
-        
+
         - name: Unit Testing
           run: npm test
-
-
-         # to Archive Test Results
-        - name: Archive Test Results
-          uses: actions/upload-artifact@v3
-          with: 
-            name: Test-Result
-            path: test-results.xml
-
