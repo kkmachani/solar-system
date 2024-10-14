@@ -128,10 +128,16 @@ jobs:
                uses: azure/setup-kubectl@v4
                with:
                   version: 'v1.25.0' # default is latest stable
+             
+             - name: Set Kubeconfig file
+               uses: azure/k8s-set-context@v4
+               with:
+                 method: kubeconfig
+                 kubeconfig: ${{ secrets.KUBE_CONFIG}}
               
              - name: Fetch Kubernetes cluster details
                run: |
-                 kubectl version
+                 kubectl version --short
                  echo -------------------------
                  kubectl get nodes
 
