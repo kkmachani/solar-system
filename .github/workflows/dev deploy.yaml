@@ -137,7 +137,7 @@ jobs:
               
              - name: Fetch Kubernetes cluster details
                run: |
-                 kubectl version --short
+                 minikube version --short
                  echo -------------------------
                  kubectl get nodes
 
