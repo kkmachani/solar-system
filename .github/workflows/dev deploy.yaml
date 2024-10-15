@@ -139,7 +139,8 @@ jobs:
              
              - name: Configure Kubeconfig
                run:  |
-                 kubectl config current-context
+                 kubectl config use-context minikube
+                 cat ~/.kube/config
 
              - name: Set Kubeconfig file
                uses: azure/k8s-set-context@v4
