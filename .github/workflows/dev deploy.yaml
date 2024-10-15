@@ -136,6 +136,10 @@ jobs:
 
              - name: Start Minikube with Docker driver
                run:  minikube start --driver=docker
+             
+             - name: Explore Kubeconfig file
+               run:  |
+                 minikube kubeconfig
 
              - name: Set Kubeconfig file
                uses: azure/k8s-set-context@v4
