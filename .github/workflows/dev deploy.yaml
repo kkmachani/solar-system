@@ -129,6 +129,13 @@ jobs:
                with:
                   version: 'v1.25.0' # default is latest 
              
+             - name: Install Minikube
+               run: |
+                  sudo apt-get update -y
+                  sudo apt-get install -y curl apt-transport-https virtualbox virtualbox-ext-pack
+                  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+                  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
              - name: Set Kubeconfig file
                uses: azure/k8s-set-context@v4
                with:
