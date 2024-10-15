@@ -135,7 +135,7 @@ jobs:
              - name: Install Kubectl CLI
                uses: azure/setup-kubectl@v4
                with:
-                  version: 'v1.25.0' # default is latest 
+                  version: 'v1.25.0' # default is latest version
              
              - name: Configure Kubeconfig
                run:  |
