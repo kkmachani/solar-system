@@ -140,9 +140,21 @@ jobs:
              - name: Configure Kubeconfig
                run:  |
                 kubectl config use-context minikube
-                kubectl get nodes
-                kubectl get pods
                 cat ~/.kube/config
+             
+             - name: Set Config file
+               uses: azure/k8s-set-context@v4
+               with:
+                method: kubeconfig
+                kubeconfig: ${{ secrets.KUBE_CONFIG}}
+
+             - name: Fetch Kubernetes cluster details
+               run: |
+                 minikube version --short
+                 echo -------------------------
+                 kubectl get nodes
+                 kubectl get pods
+            
 
             
 
