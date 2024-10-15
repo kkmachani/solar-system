@@ -141,6 +141,7 @@ jobs:
                run:  |
                 kubectl config use-context minikube
                 kubectl get nodes
+                kubectl get pods
 
             
 
