@@ -167,7 +167,14 @@ jobs:
                  NAMESPACE: ${{ vars.NAMESPACE }}
                  REPLICAS: ${{ vars. REPLICAS }}
                  IMAGE: ${{ vars.DOCKER_USERNAME}}/solarsystem:${{ github.sha }}
-                 
+            
+             - name: Check the nodes & replicas
+               run: |
+                 minikube version --short
+                 echo -------------------------
+                 kubectl get nodes
+                 kubectl get pods
+                 kubectl get svc -n ingress-nginx
                
 
             
