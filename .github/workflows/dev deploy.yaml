@@ -157,17 +157,17 @@ jobs:
                  kubectl get svc -n ingress-nginx
 
              
-            #  - name: Replace Tokens in Manifest File
-            #    uses: cschleiden/replace-tokens@v1
-            #    with:
-            #     tokenPrefix: '{'
-            #     tokenSuffix: '}'
-            #     files: '["kubernetes/development/*.yaml"]'
-            #    env:
-            #      NAMESPACE: ${{ vars.NAMESPACE }}
-            #      REPLICAS: ${{ vars. REPLICAS }}
-            #      IMAGE: ${{ vars.DOCKER_USERNAME}}/solarsystem:${{ github.sha }}
-            #      INGRESS: 
+             - name: Replace Tokens in Manifest File
+               uses: cschleiden/replace-tokens@v1
+               with:
+                tokenPrefix: '{'
+                tokenSuffix: '}'
+                files: '["kubernetes/development/*.yaml"]'
+               env:
+                 NAMESPACE: ${{ vars.NAMESPACE }}
+                 REPLICAS: ${{ vars. REPLICAS }}
+                 IMAGE: ${{ vars.DOCKER_USERNAME}}/solarsystem:${{ github.sha }}
+                 
                
 
             
