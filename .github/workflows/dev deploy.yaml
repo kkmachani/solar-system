@@ -174,7 +174,7 @@ jobs:
                  echo -------------------------
                  kubectl get nodes
                  kubectl get pods
-                 kubectl get svc -n ingress-nginx
+                 kubectl get namespaces
                
 
             
