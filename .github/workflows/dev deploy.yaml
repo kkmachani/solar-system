@@ -156,6 +156,10 @@ jobs:
                  kubectl get pods
                  kubectl get svc -n ingress-nginx
 
+            #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
+            #    run: |
+            #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
+
              
              - name: Replace Tokens in Manifest File
                uses: cschleiden/replace-tokens@v1
@@ -172,9 +176,14 @@ jobs:
                run: |
                  minikube version --short
                  echo -------------------------
+                 
                  kubectl get nodes
                  kubectl get namespaces
                  kubectl get pods
+                 minikube addons enable ingress
+                 minikube ip
+                 kubectl get svc -n kube-system
+
                  
 
             
