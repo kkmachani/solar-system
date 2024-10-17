@@ -172,17 +172,9 @@ jobs:
                  REPLICAS: ${{ vars. REPLICAS }}
                  IMAGE: ${{ vars.DOCKER_USERNAME}}/solarsystem:${{ github.sha }}
             
-             - name: Check the nodes & replicas
+             - name: check the files
                run: |
-                 minikube version --short
-                 echo -------------------------
-                 
-                 kubectl get nodes
-                 kubectl get namespaces
-                 kubectl get pods
-                 minikube addons enable ingress
-                 minikube ip
-                 kubectl get svc -n kube-system
+                 cat kubernetes/development/*.yaml
 
                  
 
