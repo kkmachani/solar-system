@@ -173,9 +173,8 @@ jobs:
                  minikube version --short
                  echo -------------------------
                  kubectl get nodes
-                 kubectl get pods
                  kubectl get namespaces
-               
+                 
 
             
 
