@@ -2,7 +2,6 @@ name: Continuous Deployment
 
 on:
   workflow_dispatch:
-  push:
      branches:
          - main
          - 'feature/*'
@@ -11,7 +10,8 @@ env:
    MONGO_USERNAME: ${{vars.MONGO_USERNAME}}
    MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
 jobs:
-    unit-testing:
+  environment: Dev
+  unit-testing:
         name: Unit-Testing
         strategy:
             matrix:
