@@ -177,6 +177,7 @@ jobs:
              - name: check the files
                run: |
                  cat kubernetes/development/*.yaml
+                 kubectl get namespaces
 
              - name: Create Mongodb secret
                run: |
