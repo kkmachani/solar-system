@@ -185,7 +185,7 @@ jobs:
                run: kubectl get namespaces
 
              - name: Get secrets
-               run: kubectl get secrets
+               run: kubectl get secrets -n development
 
             #  - name: Create Mongodb secrets
             #    run: |
