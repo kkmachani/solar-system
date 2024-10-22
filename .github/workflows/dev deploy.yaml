@@ -178,8 +178,8 @@ jobs:
                run: |
                  cat kubernetes/development/*.yaml
             
-             - name: Applying all Yaml files
-               run: kubectl apply -f kubernetes/development/deployment.yaml
+             - name: create namespace
+               run: kubectl create namespace development
 
              - name: Check the namespaces
                run: kubectl get namespaces
