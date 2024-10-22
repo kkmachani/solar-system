@@ -181,9 +181,6 @@ jobs:
              - name: Check the namespaces
                run: kubectl get namespaces
 
-             - name: apply files
-               run: kubectl apply -f 
-
              - name: Create Mongodb secret
                run: |
                  kubectl -n ${{ vars.NAMESPACE }} create secret generic mongo-db-creds \
