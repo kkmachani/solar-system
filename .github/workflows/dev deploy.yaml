@@ -178,9 +178,12 @@ jobs:
                run: |
                  cat kubernetes/development/*.yaml
             
+             - name: Applying all Yaml files
+               run: kubectl apply -f kubernetes/development/
+
              - name: Check the namespaces
                run: kubectl get namespaces
-
+               
              - name: Create Mongodb secret
                run: |
                  kubectl -n ${{ vars.NAMESPACE }} create secret generic mongo-db-creds \
