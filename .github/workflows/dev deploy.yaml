@@ -157,7 +157,8 @@ jobs:
                  kubectl get nodes
                  kubectl get pods
                  kubectl get svc -n ingress-nginx
-                 kubectl get crds
+                 kubectl api-resources | grep Deployment
+
 
             #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
             #    run: |
@@ -199,11 +200,11 @@ jobs:
                    -o yaml | kubectl apply -f -
              
 
-             - name: Deploy to Dev environment
-               run: |
-                 kubectl apply -f kubernetes/development/deployment.yaml
-                 kubectl apply -f kubernetes/development/ingress.yaml
-                 kubectl apply -f kubernetes/development/service.yaml
+            #  - name: Deploy to Dev environment
+            #    run: |
+            #      kubectl apply -f kubernetes/development/deployment.yaml
+            #      kubectl apply -f kubernetes/development/ingress.yaml
+            #      kubectl apply -f kubernetes/development/service.yaml
                   
 
             
