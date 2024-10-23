@@ -121,6 +121,12 @@ jobs:
     
     Dev-deploy:
            needs: Docker
+           environment:
+             name: development
+             url: https://${{ steps.set-ingress-host-address.outputs.APP_INGRESS_HOST }}
+           outputs:
+             APP_INGRESS_URL: ${{ steps.set-ingress-host-address.outputs.APP_INGRESS_HOST }}
+           
            runs-on: ubuntu-latest
            steps:
              - name: checkout repo
@@ -200,11 +206,9 @@ jobs:
                    -o yaml | kubectl apply -f -
              
 
-            #  - name: Deploy to Dev environment
-            #    run: |
-            #      kubectl apply -f kubernetes/development/deployment.yaml
-            #      kubectl apply -f kubernetes/development/ingress.yaml
-            #      kubectl apply -f kubernetes/development/service.yaml
+             - name: Deploy to Dev environment
+               run: |
+                 kubectl apply -f kubernetes/development
                   
 
             
