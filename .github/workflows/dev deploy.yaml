@@ -200,7 +200,9 @@ jobs:
 
              - name: Deploy to Dev environment
                run: |
-                 kubectl apply -f kubernetes/development/*.yaml
+                 kubectl apply -f kubernetes/development/deployment.yaml
+                 kubectl apply -f kubernetes/development/ingress.yaml
+                 kubectl apply -f kubernetes/development/service.yaml
                   
 
             
