@@ -158,9 +158,9 @@ jobs:
                  kubectl get pods
                  kubectl get svc -n ingress-nginx
 
-            #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
-            #    run: |
-            #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
+             - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
+               run: |
+                 echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
 
              
              - name: Replace Tokens in Manifest File
@@ -200,7 +200,7 @@ jobs:
 
              - name: Deploy to Dev environment
                run: |
-                 kubectl apply -f kubernetes/development n $development
+                 kubectl apply -f kubernetes/development -n $development
                   
 
             
