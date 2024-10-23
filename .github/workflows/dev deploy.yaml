@@ -79,8 +79,8 @@ jobs:
           - name: Docker Login
             uses: docker/login-action@v3
             with:
-              username: ${{ vars.DOCKER_USERNAME}}
-              password: ${{ secrets.DOCKER_PASSWORD}}
+              username: ${{ vars.DOCKER_USERNAME }}
+              password: ${{ secrets.DOCKER_PASSWORD }}
           
           - name: GHCR Login
             uses: docker/login-action@v3
@@ -157,6 +157,7 @@ jobs:
                  kubectl get nodes
                  kubectl get pods
                  kubectl get svc -n ingress-nginx
+                 kubectl get crds
 
             #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
             #    run: |
