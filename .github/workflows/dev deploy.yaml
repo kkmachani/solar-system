@@ -163,7 +163,8 @@ jobs:
                  echo -------------------------
                  kubectl get nodes
                  kubectl get pods
-                 kubectl get svc ingress-nginx-controller
+                 kubectl get pods -n kube-system
+
 
             # #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
             # #    run: |
