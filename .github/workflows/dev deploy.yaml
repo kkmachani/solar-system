@@ -172,16 +172,16 @@ jobs:
             # #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
 
              
-            #  - name: Replace Tokens in Manifest File
-            #    uses: cschleiden/replace-tokens@v1
-            #    with:
-            #     tokenPrefix: '_{_'
-            #     tokenSuffix: '_}_'
-            #     files: '["kubernetes/development/*.yaml"]'
-            #    env:
-            #      NAMESPACE: ${{ vars.NAMESPACE }}
-            #      REPLICAS: ${{ vars. REPLICAS }}
-            #      IMAGE: ${{ vars.DOCKER_USERNAME }}/solarsystem:${{ github.sha }}
+             - name: Replace Tokens in Manifest File
+               uses: cschleiden/replace-tokens@v1
+               with:
+                tokenPrefix: '_{_'
+                tokenSuffix: '_}_'
+                files: '["kubernetes/development/*.yaml"]'
+               env:
+                 NAMESPACE: ${{ vars.NAMESPACE }}
+                 REPLICAS: ${{ vars. REPLICAS }}
+                 IMAGE: ${{ vars.DOCKER_USERNAME }}/solarsystem:${{ github.sha }}
             
             #  - name: check the files
             #    run: |
