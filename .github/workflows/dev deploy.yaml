@@ -183,9 +183,9 @@ jobs:
                  REPLICAS: ${{ vars. REPLICAS }}
                  IMAGE: ${{ vars.DOCKER_USERNAME }}/solarsystem:${{ github.sha }}
             
-            #  - name: check the files
-            #    run: |
-            #      cat kubernetes/development/*.yaml
+             - name: check the files
+               run: |
+                 cat kubernetes/development/*.yaml
             
             #  - name: create namespace
             #    run: kubectl create namespace development
