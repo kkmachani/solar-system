@@ -156,14 +156,14 @@ jobs:
                 method: kubeconfig
                 kubeconfig: ${{ secrets.KUBE_CONFIG}}
 
-            #  - name: Fetch Kubernetes cluster details
-            #    run: |
-            #      minikube version --short
-            #      echo -------------------------
-            #      kubectl get nodes
-            #      kubectl get pods
-            #      kubectl get svc -n ingress-nginx
-            #      kubectl api-resources | grep Deployment
+             - name: Fetch Minikube cluster details
+               run: |
+                 minikube version --short
+                 echo -------------------------
+                 kubectl get nodes
+                 kubectl get pods
+                 kubectl get svc -n ingress-nginx
+                 kubectl api-resources | grep Deployment
 
 
             # #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
