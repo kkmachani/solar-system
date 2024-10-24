@@ -179,9 +179,9 @@ jobs:
                  tokenSuffix: '}'
                  files: '["kubernetes/development/*.yaml"]'
                env:
-                 NAMESPACE: ${{ vars.NAMESPACE }}
-                 REPLICAS: ${{ vars. REPLICAS }}
-                 IMAGE: ${{ vars.DOCKER_USERNAME }}/solarsystem:${{ github.sha }}
+                 NAMESPACE: ${{ env.NAMESPACE }}
+                 REPLICAS: ${{ env. REPLICAS }}
+                 IMAGE: ${{ env.DOCKER_USERNAME }}/solarsystem:${{ github.sha }}
             
              - name: check the files
                run: |
