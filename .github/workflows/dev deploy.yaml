@@ -192,6 +192,9 @@ jobs:
              - name: Check the namespaces
                run: kubectl get namespaces
 
+             - name: Delete the namespaces
+               run: kubectl delete namespace development
+
              - name: Get secrets
                run: kubectl get secrets -n development
 
@@ -204,11 +207,15 @@ jobs:
                    --save-config \
                    --dry-run=client \
                    -o yaml | kubectl apply -f -
+              
+             
+             - name: Get secrets
+               run: kubectl get secrets -n development
              
 
-             - name: Deploy to Dev environment
-               run: |
-                 kubectl apply -f kubernetes/development
+            #  - name: Deploy to Dev environment
+            #    run: |
+            #      kubectl apply -f kubernetes/development
                   
 
             
