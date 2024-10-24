@@ -158,6 +158,7 @@ jobs:
 
              - name: Fetch Minikube cluster details
                run: |
+                 minikube addons enable ingress
                  minikube version --short
                  echo -------------------------
                  kubectl get nodes
