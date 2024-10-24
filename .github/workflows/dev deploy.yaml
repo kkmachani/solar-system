@@ -171,7 +171,7 @@ jobs:
             # #    run: |
             # #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
 
-             - name: Replace Tokens in Manifest File
+             - name: Replace Tokens in deployment file
                uses: fjogeleit/yaml-update-action@main
                with:
                   valueFile: 'kubernetes/development/deployment.yaml'
@@ -179,10 +179,19 @@ jobs:
                   value: ${{ vars.NAMESPACE }}
                   branch: feature/unit-testing 
                   targetBranch: feature/unit-testing 
+
+             - name: Replace Tokens with replica in deployment file
+               uses: fjogeleit/yaml-update-action@main
+               with:
+                     valueFile: 'kubernetes/development/deployment.yaml'
+                     propertyPath: 'metadata.namespace'
+                     value: ${{ vars.Replica }}
+                     branch: feature/unit-testing 
+                     targetBranch: feature/unit-testing 
             
              - name: check the files
                run: |
-                 cat kubernetes/development/*.yaml
+                 cat kubernetes/development/deployment.yaml
             
             #  - name: create namespace
             #    run: kubectl create namespace development
