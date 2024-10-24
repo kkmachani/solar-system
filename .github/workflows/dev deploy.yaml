@@ -162,8 +162,7 @@ jobs:
                  echo -------------------------
                  kubectl get nodes
                  kubectl get pods
-                 kubectl get svc -n ingress-nginx
-                 kubectl api-resources | grep Deployment
+                 kubectl get svc -n kube-system
 
 
             # #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
@@ -174,8 +173,8 @@ jobs:
             #  - name: Replace Tokens in Manifest File
             #    uses: cschleiden/replace-tokens@v1
             #    with:
-            #     tokenPrefix: '{'
-            #     tokenSuffix: '}'
+            #     tokenPrefix: '_{_'
+            #     tokenSuffix: '_}_'
             #     files: '["kubernetes/development/*.yaml"]'
             #    env:
             #      NAMESPACE: ${{ vars.NAMESPACE }}
