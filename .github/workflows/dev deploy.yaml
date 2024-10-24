@@ -164,6 +164,7 @@ jobs:
                  kubectl get nodes
                  kubectl get pods
                  kubectl get pods -n kube-system
+                 minikube ip
 
 
             # #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
