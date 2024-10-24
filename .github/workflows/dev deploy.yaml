@@ -148,15 +148,13 @@ jobs:
              - name: Configure Kubeconfig
                run:  |
                 kubectl config view --minify
-                cat ~/.kube/config
+                
 
-
-             
-            #  - name: Set Config file
-            #    uses: azure/k8s-set-context@v4
-            #    with:
-            #     method: kubeconfig
-            #     kubeconfig: ${{ secrets.KUBE_CONFIG}}
+             - name: Set Config file
+               uses: azure/k8s-set-context@v4
+               with:
+                method: kubeconfig
+                kubeconfig: ${{ secrets.KUBE_CONFIG}}
 
             #  - name: Fetch Kubernetes cluster details
             #    run: |
