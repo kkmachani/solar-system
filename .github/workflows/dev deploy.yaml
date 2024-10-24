@@ -178,8 +178,8 @@ jobs:
                 valueFile: 'kubernetes/development/*.yaml'
                 propertyPath: 'metadata.namespace'
                 value: ${{ vars.NAMESPACE }}
-                branch: production
-                targetBranch: production
+                branch: feature/unit-testing
+                targetBranch: feature/unit-testing
             
              - name: check the files
                run: |
