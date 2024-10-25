@@ -175,15 +175,15 @@ jobs:
              - name: Update deployment yml
                uses: fjogeleit/yaml-update-action@main
                with:
-                  valueFile: 'kubernetes/development/deployment.yaml'
-                  propertyPath: |
-                    metadata.namespace
-                    metadata.replicas
-                  value: |
-                    ${{ vars.NAMESPACE }} 
-                    ${{ vars.REPLICAS }}
-                  branch: feature/unit-testing
-                  targetBranch: feature/unit-testing
+                 valueFile: 'kubernetes/development/deployment.yaml'
+                 propertyPath: |
+                   metadata.namespace
+                   metadata.replicas
+                 value: |
+                   ${{ vars.NAMESPACE }} 
+                   ${{ vars.REPLICAS }}
+                 branch: feature/unit-testing
+                 targetBranch: feature/unit-testing
 
              - name: check the files
                run: |
