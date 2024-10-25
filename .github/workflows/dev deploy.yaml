@@ -170,25 +170,18 @@ jobs:
             # #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
             # #    run: |
             # #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
-
-             - name: Replace Tokens in deployment file
-               uses: fjogeleit/yaml-update-action@main
+             
+             - name: Replacing the Tokens with variables
+               uses: cschleiden/replace-tokens@v1
                with:
-                  valueFile: 'kubernetes/development/deployment.yaml'
-                  propertyPath: 'metadata.namespace'
-                  value: ${{ vars.NAMESPACE }}
-                  branch: feature/unit-testing 
-                  targetBranch: feature/unit-testing 
-
-             - name: Replace Tokens with replica in deployment file
-               uses: fjogeleit/yaml-update-action@main
-               with:
-                     valueFile: 'kubernetes/development/deployment.yaml'
-                     propertyPath: 'metadata.namespace'
-                     value: ${{ vars.Replica }}
-                     branch: feature/unit-testing 
-                     targetBranch: feature/unit-testing 
-            
+                 tokenPrefix: '{'
+                 tokenSuffix: '}'
+                 files: '["kubernetes/deployment/*.yaml"]'
+               env:
+                 NAMESPACE: ${{ vars.NAMESPACE }}
+                 REPLICAS: ${{ vars.REPLICAS }}
+                 IMAGE: ${{ env.DOCKER_USERNAME }}/solar-system:${{ github.sha }}            
+             
              - name: check the files
                run: |
                  cat kubernetes/development/deployment.yaml
