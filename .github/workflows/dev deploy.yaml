@@ -175,11 +175,11 @@ jobs:
              - name: Update deployment yml
                uses: fjogeleit/yaml-update-action@main
                with:
-                  valueFile: 'manifests/prod/deployment_ai_assist_be.yml'
+                  valueFile: 'kubernetes/development/deployment.yaml'
                   propertyPath: 'metadata.namespace'
-                  value: ${{ vars.NAMESPACE }}, ${{ vars.REPLICAS }}
-                  branch: production
-                  targetBranch: production
+                  value: ${{ vars.NAMESPACE }}
+                  branch: feature/unit-testing
+                  targetBranch: feature/unit-testing
 
              - name: check the files
                run: |
