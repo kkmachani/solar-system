@@ -172,17 +172,14 @@ jobs:
             # #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
             #  - name: Check YAML files before replacement
             #    run: cat kubernetes/deployment/*.yaml
-          
-             - name: Replacing the Tokens with variables
-               uses: cschleiden/replace-tokens@v1
+             - name: Update deployment yml
+               uses: fjogeleit/yaml-update-action@main
                with:
-                tokenPrefix: '{'
-                tokenSuffix: '}'
-                files: 'kubernetes/deployment/*.yaml'
-               env:
-                NAMESPACE: ${{ vars.NAMESPACE }}
-                REPLICAS: ${{ vars.REPLICAS }}
-                IMAGE: ${{ env.DOCKER_USERNAME }}/solar-system:${{ github.sha }}
+                  valueFile: 'manifests/prod/deployment_ai_assist_be.yml'
+                  propertyPath: 'metadata.namespace'
+                  value: ${{ vars.NAMESPACE }}, ${{ vars.REPLICAS }}
+                  branch: production
+                  targetBranch: production
 
              - name: check the files
                run: |
