@@ -183,11 +183,7 @@ jobs:
                 NAMESPACE: ${{ vars.NAMESPACE }}
                 REPLICAS: ${{ vars.REPLICAS }}
                 IMAGE: ${{ env.DOCKER_USERNAME }}/solar-system:${{ github.sha }}
-          
-             - name: Check YAML files after replacement
-               run: cat kubernetes/deployment/*.yaml
-                    
-             
+
              - name: check the files
                run: |
                  cat kubernetes/development/deployment.yaml
