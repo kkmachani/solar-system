@@ -170,17 +170,23 @@ jobs:
             # #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
             # #    run: |
             # #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}""
-             
+             - name: Check YAML files before replacement
+               run: cat kubernetes/deployment/*.yaml
+          
              - name: Replacing the Tokens with variables
                uses: cschleiden/replace-tokens@v1
                with:
-                 tokenPrefix: '{'
-                 tokenSuffix: '}'
-                 files: '["kubernetes/deployment/*.yaml"]'
+                tokenPrefix: '{'
+                tokenSuffix: '}'
+                files: 'kubernetes/deployment/*.yaml'
                env:
-                 NAMESPACE: ${{ vars.NAMESPACE }}
-                 REPLICAS: ${{ vars.REPLICAS }}
-                 IMAGE: ${{ env.DOCKER_USERNAME }}/solar-system:${{ github.sha }}            
+                NAMESPACE: ${{ vars.NAMESPACE }}
+                REPLICAS: ${{ vars.REPLICAS }}
+                IMAGE: ${{ env.DOCKER_USERNAME }}/solar-system:${{ github.sha }}
+          
+             - name: Check YAML files after replacement
+               run: cat kubernetes/deployment/*.yaml
+                    
              
              - name: check the files
                run: |
