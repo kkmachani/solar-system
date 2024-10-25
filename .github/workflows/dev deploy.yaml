@@ -177,7 +177,7 @@ jobs:
                with:
                  valueFile: 'kubernetes/development/deployment.yaml'
                  propertyPath: |
-                   metadata.namespace, metadata.replicas
+                   $.metadata.namespace, metadata.replicas
                  value: |
                    ${{ vars.NAMESPACE }} 
                    ${{ vars.REPLICAS }}
