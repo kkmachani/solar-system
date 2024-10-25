@@ -178,7 +178,7 @@ jobs:
                with:
                 tokenPrefix: '{'
                 tokenSuffix: '}'
-                files: 'kubernetes/deployment/*.yaml'
+                files: 'kubernetes/development/*.yaml'
                env:
                 NAMESPACE: ${{ vars.NAMESPACE }}
                 REPLICAS: ${{ vars.REPLICAS }}
