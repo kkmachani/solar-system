@@ -176,8 +176,7 @@ jobs:
                uses: fjogeleit/yaml-update-action@main
                with:
                  valueFile: 'kubernetes/development/deployment.yaml'
-                 propertyPath: |
-                   $.metadata.namespace, metadata.replicas
+                 propertyPath: $.metadata.namespace, metadata.replicas
                  value: |
                    ${{ vars.NAMESPACE }} 
                    ${{ vars.REPLICAS }}
