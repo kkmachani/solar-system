@@ -200,7 +200,7 @@ jobs:
             #        echo "No Changes to commit"
             #      fi
 
-             - name: Create Namespace
+             - name: Create Namespaces
                run: kubectl create namespace ${{ vars.NAMESPACE }}
 
              - name: Create Mongodb secrets
