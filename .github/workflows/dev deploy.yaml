@@ -187,18 +187,18 @@ jobs:
                  cat kubernetes/development/*.yaml
 
 
-            #  - name: Commit changes
-            #    run: |
-            #      # Configure commit
-            #      git config --local user.name "kkmachani"
-            #      git config --local user.email "kkmachani@gmail.com"
-            #      if [ -n "$(git status --porcelain)" ]; then
-            #        git add kubernetes/development/*.yaml
-            #        git commit -m "Update configuration with replaced tokens"
-            #        git push
-            #      else
-            #        echo "No Changes to commit"
-            #      fi
+             - name: Commit changes
+               run: |
+                 # Configure commit
+                 git config --local user.name "kkmachani"
+                 git config --local user.email "kkmachani@gmail.com"
+                 if [ -n "$(git status --porcelain)" ]; then
+                   git add kubernetes/development/*.yaml
+                   git commit -m "Update with replaced tokens"
+                   git push
+                 else
+                   echo "No Changes to commit"
+                 fi
 
              - name: Create Namespaces
                run: kubectl create namespace ${{ vars.NAMESPACE }}
