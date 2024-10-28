@@ -206,8 +206,8 @@ jobs:
             #  - name: create namespace
             #    run: kubectl create namespace development
 
-            #  - name: Check the namespaces
-            #    run: kubectl get namespaces
+             - name: Check the namespaces
+               run: kubectl get namespaces
 
             #  - name: Delete the namespaces
             #    run: kubectl delete namespace development
