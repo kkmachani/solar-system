@@ -186,7 +186,7 @@ jobs:
 
              - name: check the files
                run: |
-                 cat kubernetes/development/deployment.yaml
+                 cat kubernetes/development/*.yaml
             
             #  - name: create namespace
             #    run: kubectl create namespace development
