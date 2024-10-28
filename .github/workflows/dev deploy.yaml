@@ -195,7 +195,7 @@ jobs:
                  if [ -n "$(git status --porcelain)" ]; then
                    git add kubernetes/development/*.yaml
                    git commit -m "Update with replaced tokens"
-                   git push
+                   git push origin main
                  else
                    echo "No Changes to commit"
                  fi
