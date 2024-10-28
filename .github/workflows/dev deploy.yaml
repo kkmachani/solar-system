@@ -169,7 +169,7 @@ jobs:
 
              - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
                run: |
-                 echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
+                 echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip})"
             
              - name: Replacing the Tokens with variables
                uses: cschleiden/replace-tokens@v1
