@@ -194,12 +194,10 @@ jobs:
                  # Configure commit
                  git config --local user.name "kkmachani"
                  git config --local user.email "kkmachani@gmail.com"
-
-             - name: Add the modified file
-               run: git add kubernetes/development/*.yaml
-
-             - name: Commit the changes
-               run: git commit -m "Update configuration with replaced tokens"
+                 if [ -n "$(git status --porcelain)" ]; then
+                   git add kubernetes/development/*.yaml
+                 git commit -m "Update configuration with replaced tokens"
+                 git push
             
             #  - name: create namespace
             #    run: kubectl create namespace development
