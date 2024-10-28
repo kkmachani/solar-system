@@ -187,6 +187,19 @@ jobs:
              - name: check the files
                run: |
                  cat kubernetes/development/*.yaml
+
+
+             - name: Commit changes
+               run: |
+                 # Configure commit
+                 git config --local user.name "kkmachani"
+                 git config --local user.email "kkmachani@gmail.com"
+
+             - name: Add the modified file
+               run: git add kubernetes/development/*.yaml
+
+             - name: Commit the changes
+               run: git commit -m "Update configuration with replaced tokens"
             
             #  - name: create namespace
             #    run: kubectl create namespace development
