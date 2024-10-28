@@ -193,9 +193,10 @@ jobs:
                  git config --local user.name "kkmachani"
                  git config --local user.email "kkmachani@gmail.com"
                  if [ -n "$(git status --porcelain)" ]; then
+                   git ls-files --others --exclude-standard
                    git add kubernetes/development/*.yaml
-                   git commit -m "Update with replaced tokens"
-                   git push origin 
+                   git commit -m "Add untracked files"
+                   git push origin main
                  else
                    echo "No Changes to commit"
                  fi
