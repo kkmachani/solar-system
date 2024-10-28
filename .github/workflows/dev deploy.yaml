@@ -173,34 +173,34 @@ jobs:
             #  - name: Check YAML files before replacement
             #    run: cat kubernetes/deployment/*.y
             
-             - name: Replacing the Tokens with variables
-               uses: cschleiden/replace-tokens@v1
-               with:
-                tokenPrefix: '_{_'
-                tokenSuffix: '_}_'
-                files: '["kubernetes/development/*.yaml"]'
-               env:
-                NAMESPACE: ${{ vars.NAMESPACE }}
-                REPLICAS: ${{ vars.REPLICAS }}
-                IMAGE: ${{ vars.DOCKER_USERNAME }}/solar-system:${{ github.sha }}
+            #  - name: Replacing the Tokens with variables
+            #    uses: cschleiden/replace-tokens@v1
+            #    with:
+            #     tokenPrefix: '_{_'
+            #     tokenSuffix: '_}_'
+            #     files: '["kubernetes/development/*.yaml"]'
+            #    env:
+            #     NAMESPACE: ${{ vars.NAMESPACE }}
+            #     REPLICAS: ${{ vars.REPLICAS }}
+            #     IMAGE: ${{ vars.DOCKER_USERNAME }}/solar-system:${{ github.sha }}
 
-             - name: check the files
-               run: |
-                 cat kubernetes/development/*.yaml
+            #  - name: check the files
+            #    run: |
+            #      cat kubernetes/development/*.yaml
 
 
-             - name: Commit changes
-               run: |
-                 # Configure commit
-                 git config --local user.name "kkmachani"
-                 git config --local user.email "kkmachani@gmail.com"
-                 if [ -n "$(git status --porcelain)" ]; then
-                   git add kubernetes/development/*.yaml
-                   git commit -m "Update configuration with replaced tokens"
-                   git push
-                 else
-                   echo "No Changes to commit"
-                 fi
+            #  - name: Commit changes
+            #    run: |
+            #      # Configure commit
+            #      git config --local user.name "kkmachani"
+            #      git config --local user.email "kkmachani@gmail.com"
+            #      if [ -n "$(git status --porcelain)" ]; then
+            #        git add kubernetes/development/*.yaml
+            #        git commit -m "Update configuration with replaced tokens"
+            #        git push
+            #      else
+            #        echo "No Changes to commit"
+            #      fi
 
             
             #  - name: create namespace
