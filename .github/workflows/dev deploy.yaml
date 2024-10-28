@@ -200,6 +200,9 @@ jobs:
             #        echo "No Changes to commit"
             #      fi
 
+             - name: Create Namespace
+               run: kubectl create namespace ${{ vars.NAMESPACE }}
+
              - name: Create Mongodb secrets
                run: |
                  kubectl -n ${{ vars.NAMESPACE }} create secret generic mongo-db-creds \
@@ -209,6 +212,9 @@ jobs:
                    --save-config \
                    --dry-run=client \
                    -o yaml | kubectl apply -f -
+             
+             - name: Get secrets
+               run: kubectl get secrets -n ${{ vars.NAMESPACE }}
              
 
              - name: Deploy to Dev environment
