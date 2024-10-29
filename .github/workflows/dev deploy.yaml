@@ -194,7 +194,7 @@ jobs:
              
              - name: Replace token with replica variable
                run: |     
-                 sed -i "s/Development/${{ vars.NREPLICA }}/g" ./kubernetes/development*.yaml
+                 sed -i "s/2/${{ vars.NREPLICA }}/g" ./kubernetes/development*.yaml
            
 
              
