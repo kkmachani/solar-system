@@ -188,9 +188,9 @@ jobs:
             #     OLD_REPLICAS: ${{ vars. REPLICAS }}      # Old replicas value
             #     NEW_REPLICAS: ${{ vars.NREPLICA }}      # New replicas value
 
-             - name: Replace tokens in file
-               run: |
-                 sed -i "s/Development/${{ vars.NSPACE }}/g" ./kubernetes/development/*.yaml
+            #  - name: Replace tokens in file
+            #    run: |
+            #      sed -i "s/Development/${{ vars.NSPACE }}/g" ./kubernetes/development/*.yaml
            
 
              
@@ -214,21 +214,21 @@ jobs:
 
 
 
-             - name: Configure Git
-               run: |
-                 git config --global user.name "kkmachani"
-                 git config --global user.email "kkmachani@gmail.com"
+            #  - name: Configure Git
+            #    run: |
+            #      git config --global user.name "kkmachani"
+            #      git config --global user.email "kkmachani@gmail.com"
 
-             - name: Commit and push changes
-               run: |
-                 git add ./kubernetes/development/*.yaml
-                 git commit -m "Replace tokens with new values"
-                 git push
+            #  - name: Commit and push changes
+            #    run: |
+            #      git add ./kubernetes/development/*.yaml
+            #      git commit -m "Replace tokens with new values"
+            #      git push
 
              
-             - name: check the files
-               run: |
-                 cat kubernetes/development/*.yaml
+            #  - name: check the files
+            #    run: |
+            #      cat kubernetes/development/*.yaml
 
 
             #  - name: Apply Ingress service
