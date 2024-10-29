@@ -194,9 +194,11 @@ jobs:
                  git config --local user.email "kkmachani@gmail.com"
                  if [ -n "$(git status --porcelain)" ]; then
                    git ls-files --others --exclude-standard
-                   git add kubernetes/development/*.yaml
-                   git commit -m "Add untracked files"
-                   git push origin main
+                   git add minikube-linux-amd64
+                   git status
+                   git commit -m "Add minikube binary"
+                   
+                   git push origin feature/unit-testing
                  else
                    echo "No Changes to commit"
                  fi
