@@ -192,11 +192,6 @@ jobs:
              - name: Check for Changes
                run: |
                  git diff --exit-code || echo "Changes detected"
-      
-
-             - name: check the files
-               run: |
-                 cat kubernetes/development/*.yaml
 
 
              - name: Commit changes
@@ -205,9 +200,16 @@ jobs:
                  git config user.name "kkmachani"
                  git config user.email "kkmachani@gmail.com"
                  git add kubernetes/development/*.yaml
-                 git commit -m "replace old values with new var"
-                 git push origin feature/unit-testing
+                 if ! git diff --cached --quiet; then
+                 git commit -m "Replace old variable values with new ones"
+                 else
+                 echo "No changes to commit"
                  fi
+
+             
+             - name: check the files
+               run: |
+                 cat kubernetes/development/*.yaml
 
             #  - name: Create Namespaces
             #    run: kubectl create namespace ${{ vars.NAMESPACE }}
