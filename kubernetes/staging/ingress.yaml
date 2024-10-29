@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-  name: solar-system
+  name: solarsystem
   namespace: _{_NAMESPACE_}_
 spec:
     rules:
