@@ -184,9 +184,9 @@ jobs:
                 files: '["kubernetes/development/*.yaml"]'
                env:
                 OLD_NAMESPACE: ${{ vars.NAMESPACE }}  # Old variable value
-                NEW_NAMESPACE: ${{ vars.NEW_NAMESPACE }}  # New variable value
+                NEW_NAMESPACE: ${{ vars.NSPACE }}  # New variable value
                 OLD_REPLICAS: ${{ vars. REPLICAS }}      # Old replicas value
-                NEW_REPLICAS: ${{ vars.NEW_REPLICAS }}      # New replicas value
+                NEW_REPLICAS: ${{ vars.NREPLICA }}      # New replicas value
 
              
              - name: Check for Changes
@@ -205,13 +205,16 @@ jobs:
                  else
                  echo "No changes to commit"
                  fi
-
                  git push origin feature/unit-testing
 
              
              - name: check the files
                run: |
                  cat kubernetes/development/*.yaml
+
+
+             - name: Apply Ingress service
+               run: kubectl apply-f kubernetes/development/ingress.yaml
 
             #  - name: Create Namespaces
             #    run: kubectl create namespace ${{ vars.NAMESPACE }}

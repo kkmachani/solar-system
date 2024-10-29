@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: solar-system
-  name: solarsystem
+  name: solar-system
   namespace: _{_NSPACE_}_
 spec:
   replicas: _{_REPLICA_}_
