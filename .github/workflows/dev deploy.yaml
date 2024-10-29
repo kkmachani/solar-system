@@ -170,7 +170,12 @@ jobs:
              - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
                run: |
                  echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}")"
-            
+             
+             - name: Debug Environment Variables
+               run: |
+                 echo "NAMESPACE: ${{ vars.NAMESPACE }}"
+                 echo "REPLICAS: ${{ vars.REPLICAS }}"
+             
              - name: Replacing the Tokens with variables
                uses: cschleiden/replace-tokens@v1
                with:
@@ -182,6 +187,11 @@ jobs:
                 NEW_NAMESPACE: ${{ vars.NEW_NAMESPACE }}  # New variable value
                 OLD_REPLICAS: ${{ vars. REPLICAS }}      # Old replicas value
                 NEW_REPLICAS: ${{ vars.NEW_REPLICAS }}      # New replicas value
+
+             
+             - name: Check for Changes
+               run: |
+                 git diff --exit-code || echo "Changes detected"
       
 
              - name: check the files
@@ -189,15 +199,15 @@ jobs:
                  cat kubernetes/development/*.yaml
 
 
-            #  - name: Commit changes
-            #    run: |
-            #      # configure git
-            #      git config user.name "kkmachani"
-            #      git config user.email "kkmachani@gmail.com"
-            #      git add kubernetes/development/*.yaml
-            #      git commit -m "Update YAML files with replaced tokens"
-            #      git push origin feature/unit-testing
-            #      fi
+             - name: Commit changes
+               run: |
+                 # configure git
+                 git config user.name "kkmachani"
+                 git config user.email "kkmachani@gmail.com"
+                 git add kubernetes/development/*.yaml
+                 git commit -m "replace old values with new var"
+                 git push origin feature/unit-testing
+                 fi
 
             #  - name: Create Namespaces
             #    run: kubectl create namespace ${{ vars.NAMESPACE }}
