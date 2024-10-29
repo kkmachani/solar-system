@@ -191,10 +191,6 @@ jobs:
              - name: Replace tokens in file
                run: |
                  sed -i "s/Development/${{ vars.NSPACE }}/g" ./kubernetes/development/*.yaml
-             
-             - name: Replace token with replica variable
-               run: |     
-                 sed -i "s/REPLICAS/${{ vars.NREPLICA }}/g" ./kubernetes/development*.yaml
            
 
              
@@ -251,8 +247,8 @@ jobs:
                    --dry-run=client \
                    -o yaml | kubectl apply -f -
              
-            #  - name: Get secrets
-            #    run: kubectl get secrets -n ${{ vars.NAMESPACE }}
+             - name: Get secrets
+               run: kubectl get secrets -n ${{ vars.NAMESPACE }}
              
 
             #  - name: Deploy to Dev environment
