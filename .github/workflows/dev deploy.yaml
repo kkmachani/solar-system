@@ -167,9 +167,9 @@ jobs:
                  minikube ip
 
 
-             - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
-               run: |
-                 echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}")"
+            #  - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
+            #    run: |
+            #      echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}")"
              
              - name: Debug Environment Variables
                run: |
@@ -181,7 +181,7 @@ jobs:
                with:
                 tokenPrefix: '_{_'
                 tokenSuffix: '_}_'
-                files: 'kubernetes/development/*.yaml'
+                files: '["kubernetes/development/*.yaml"]'
                env:
                 OLD_NAMESPACE: ${{ vars.NAMESPACE }}  # Old variable value
                 NEW_NAMESPACE: ${{ vars.NEW_NAMESPACE }}  # New variable value
