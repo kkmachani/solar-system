@@ -285,14 +285,14 @@ jobs:
                   fi
 
              
-            #  - name: Deploy to Dev environment
-            #    run: |
-            #      kubectl apply -f kubernetes/development
+             - name: Deploy to Dev environment
+               run: |
+                 kubectl apply -f kubernetes/development
              
-            #  - name: Get deployments & services
-            #    run: |
-            #      kubectl get deployments -n ${{ vars.NSPACE }}
-            #      kubectl get svc -n ${{ vars.NSPACE }}
+             - name: Get deployments & services
+               run: |
+                 kubectl get deployments -n ${{ vars.NSPACE }}
+                 kubectl get svc -n ${{ vars.NSPACE }}
                  
                   
 
