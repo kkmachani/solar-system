@@ -169,12 +169,12 @@ jobs:
 
              - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
                run: |
-                 echo "INGRESS_IP=$(minikube ip)" >> $GITHUB_ENV
+                 echo "MINIKUBE_IP=$(minikube ip)" >> $GITHUB_ENV
 
              
              - name: Use the INGRESS_IP
                run: |
-                 echo "The Ingress IP is $INGRESS_IP"
+                 echo "The Ingress IP is $MINIKUBE_IP"
 
             #  - name: Replace ingress IP 
             #    run: |
@@ -262,7 +262,7 @@ jobs:
 
              - name: Replace ingress IP 
                run: |
-                 sed -i "s|{{ INGRESS_IP }}|INGRESS_IP|g" ./kubernetes/development/ingress.yaml
+                 sed -i "s|{{ INGRESS_IP }}|MINIKUBE_IP|g" ./kubernetes/development/ingress.yaml
                  cat ./kubernetes/development/ingress.yaml  # Display the updated config file for verification
                          
              
@@ -275,9 +275,12 @@ jobs:
              
              - name: Commit the changes
                run: |
-                   git add ./kubernetes/development/*.yaml
-                   git commit -m "Replace tokens with new values"
-                   git push
+                  if [ -n "$(git status --porcelain)" ]; then
+                  git commit -m "Update YAML files with Ingress IP"
+                  git push
+                  else
+                  echo "No changes to commit."
+                  fi
 
              
              - name: Deploy to Dev environment
