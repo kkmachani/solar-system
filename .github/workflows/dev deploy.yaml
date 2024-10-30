@@ -265,21 +265,24 @@ jobs:
              
                          
              
-            #  - name: Configure Git 
-            #    run: |
-            #      git config --global user.name "kkmachani"
-            #      git config --global user.email "kkmachani@gmail.com"
+             - name: Configure Git 
+               run: |
+                 git config --global user.name "kkmachani"
+                 git config --global user.email "kkmachani@gmail.com"
+
+             - name: Stage the files
+               run: git add ./kubernetes/development/*.yaml
              
             
              
-            #  - name: Commit the changes
-            #    run: |
-            #       if [ -n "$(git status --porcelain)" ]; then
-            #       git commit -m "Update YAML files with Ingress IP"
-            #       git push
-            #       else
-            #       echo "No changes to commit."
-            #       fi
+             - name: Commit the changes
+               run: |
+                  if [ -n "$(git status --porcelain)" ]; then
+                  git commit -m "Update YAML files with Ingress IP"
+                  git push
+                  else
+                  echo "No changes to commit."
+                  fi
 
              
             #  - name: Deploy to Dev environment
