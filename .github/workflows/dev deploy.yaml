@@ -251,9 +251,9 @@ jobs:
                run: kubectl get secrets -n ${{ vars.NSPACE }}
              
 
-            #  - name: Deploy to Dev environment
-            #    run: |
-            #      kubectl apply -f kubernetes/development
+             - name: Deploy to Dev environment
+               run: |
+                 kubectl apply -f kubernetes/development
                   
 
             
