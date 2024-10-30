@@ -174,7 +174,7 @@ jobs:
              
              - name: Use the INGRESS_IP
                run: |
-                 echo "The Ingress IP is INGRESS_IP
+                 echo "The Ingress IP is "INGRESS_IP"
 
             #  - name: Replace ingress IP 
             #    run: |
