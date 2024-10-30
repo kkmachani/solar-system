@@ -264,8 +264,22 @@ jobs:
                run: |
                  sed -i "s|{{ INGRESS_IP }}|$INGRESS_IP|g" ./kubernetes/development/ingress.yaml
                  cat ./kubernetes/development/ingress.yaml  # Display the updated config file for verification
+                         #  - name: Configure Git
              
+             - name: Configure Git 
+               run: |
+                 git config --global user.name "kkmachani"
+                 git config --global user.email "kkmachani@gmail.com"
+             
+                         #  - name: Commit and push changes
+             
+             - name: Commit the changes
+               run: |
+                   git add ./kubernetes/development/*.yaml
+                   git commit -m "Replace tokens with new values"
+                   git push
 
+             
              - name: Deploy to Dev environment
                run: |
                  kubectl apply -f kubernetes/development
