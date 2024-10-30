@@ -260,7 +260,7 @@ jobs:
 
              - name: Replace ingress IP
                run: |
-                 sed -i "s|{{ IN_IP }}|$INGRESS_IP|g" ./kubernetes/development/*.yaml
+                 sed -i "s|{{IN_IP}}|$INGRESS_IP|g" ./kubernetes/development/*.yaml
                  cat ./kubernetes/development/ingress.yaml  # Display the updated config file for verification
              
                          
