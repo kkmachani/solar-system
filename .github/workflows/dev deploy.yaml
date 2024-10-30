@@ -175,6 +175,11 @@ jobs:
              - name: Use the INGRESS_IP
                run: |
                  echo "The Ingress IP is $INGRESS_IP"
+
+            #  - name: Replace ingress IP 
+            #    run: |
+            #      sed -i "s|{{ INGRESS_IP }}|$INGRESS_IP|g" config.yaml
+            #      cat config.yaml  # Display the updated config file for verification
              
              - name: Debug Environment Variables
                run: |
@@ -254,6 +259,11 @@ jobs:
              
              - name: Get secrets
                run: kubectl get secrets -n ${{ vars.NSPACE }}
+
+             - name: Replace ingress IP 
+               run: |
+                 sed -i "s|{{ INGRESS_IP }}|$INGRESS_IP|g" config.yaml
+                 cat config.yaml  # Display the updated config file for verification
              
 
              - name: Deploy to Dev environment
