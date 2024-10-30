@@ -174,7 +174,7 @@ jobs:
              
              - name: Use the INGRESS_IP
                run: |
-                 echo "The Ingress IP is "INGRESS_IP"
+                 echo "The Ingress IP is $INGRESS_IP"
 
             #  - name: Replace ingress IP 
             #    run: |
@@ -264,14 +264,14 @@ jobs:
                run: |
                  sed -i "s|{{ INGRESS_IP }}|INGRESS_IP|g" ./kubernetes/development/ingress.yaml
                  cat ./kubernetes/development/ingress.yaml  # Display the updated config file for verification
-                         #  - name: Configure Git
+                         
              
              - name: Configure Git 
                run: |
                  git config --global user.name "kkmachani"
                  git config --global user.email "kkmachani@gmail.com"
              
-                         #  - name: Commit and push changes
+            
              
              - name: Commit the changes
                run: |
