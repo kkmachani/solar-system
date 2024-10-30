@@ -169,7 +169,12 @@ jobs:
 
              - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
                run: |
-                 echo "INGRESS_IP=$(minikube ip)"
+                 echo "INGRESS_IP=$(minikube ip)" >> $GITHUB_ENV
+
+             
+             - name: Use the INGRESS_IP
+               run: |
+                 echo "The Ingress IP is $INGRESS_IP"
              
              - name: Debug Environment Variables
                run: |
@@ -234,31 +239,31 @@ jobs:
             #  - name: Apply Ingress service
             #    run: kubectl apply-f kubernetes/development/ingress.yaml
 
-             - name: Create Namespaces
-               run: kubectl create namespace ${{ vars.NSPACE }}
+            #  - name: Create Namespaces
+            #    run: kubectl create namespace ${{ vars.NSPACE }}
 
-             - name: Create Mongodb secrets
-               run: |
-                 kubectl -n ${{ vars.NSPACE }} create secret generic mongo-db-creds \
-                   --from-literal=MONGO_URI=${{ env.MONGO_URI }} \
-                   --from-literal=MONGO_USERNAME=${{ vars.MONGO_USERNAME }} \
-                   --from-literal=MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} \
-                   --save-config \
-                   --dry-run=client \
-                   -o yaml | kubectl apply -f -
+            #  - name: Create Mongodb secrets
+            #    run: |
+            #      kubectl -n ${{ vars.NSPACE }} create secret generic mongo-db-creds \
+            #        --from-literal=MONGO_URI=${{ env.MONGO_URI }} \
+            #        --from-literal=MONGO_USERNAME=${{ vars.MONGO_USERNAME }} \
+            #        --from-literal=MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }} \
+            #        --save-config \
+            #        --dry-run=client \
+            #        -o yaml | kubectl apply -f -
              
-             - name: Get secrets
-               run: kubectl get secrets -n ${{ vars.NSPACE }}
+            #  - name: Get secrets
+            #    run: kubectl get secrets -n ${{ vars.NSPACE }}
              
 
             #  - name: Deploy to Dev environment
             #    run: |
             #      kubectl apply -f kubernetes/development
              
-             - name: Get deployments & services
-               run: |
-                 kubectl get deployments -n ${{ vars.NSPACE }}
-                 kubectl get svc -n ${{ vars.NSPACE }}
+            #  - name: Get deployments & services
+            #    run: |
+            #      kubectl get deployments -n ${{ vars.NSPACE }}
+            #      kubectl get svc -n ${{ vars.NSPACE }}
                   
 
             
