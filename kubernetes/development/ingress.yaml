@@ -2,11 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: nginx
+   
     kubernetes.io/tls-acme: "true"
   name: solar-system
   namespace: develop
 spec:
+    ingressClassName: nginx
     rules:
     - host: solar-system-develop.192.168.49.2.nip.io
       http:
