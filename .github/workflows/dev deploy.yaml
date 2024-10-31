@@ -296,13 +296,18 @@ jobs:
                  kubectl get svc -n ${{ vars.NSPACE }}
 
              
-             - name: check the Ingress
-               run: |
+            #  - name: check the Ingress
+            #    run: |
                  
-                 kubectl create secret tls ingress-local-tls --cert=path/to/tls.crt --key=path/to/tls.key -n ${{ vars.NSPACE }}
-                 kubectl get secret ingress-local-tls -n ${{ vars.NSPACE }}
-                 kubectl apply -f kubernetes/development/ingress.yaml
-                 kubectl get ingress -n ${{ vars.NSPACE }}
+            #      kubectl create secret tls ingress-local-tls --cert=path/to/tls.crt --key=path/to/tls.key -n ${{ vars.NSPACE }}
+            #      kubectl get secret ingress-local-tls -n ${{ vars.NSPACE }}
+            #      kubectl apply -f kubernetes/development/ingress.yaml
+            #      kubectl get ingress -n ${{ vars.NSPACE }}
+
+             - name: check the service 
+               run: |
+                 curl http://192.168.49.2:3000
+
 
 
                  
