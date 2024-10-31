@@ -295,6 +295,12 @@ jobs:
                  kubectl get deployments -n ${{ vars.NSPACE }}
                  kubectl get svc -n ${{ vars.NSPACE }}
 
+             
+             - name: deployments & services
+               run: |
+                 kubectl get deployments -n ${{ vars.NSPACE }}
+                 kubectl get svc -n ${{ vars.NSPACE }}
+
     # Integration-testing:
     #      name: Setting up Integration Testing
     #      needs: Dev-deploy
