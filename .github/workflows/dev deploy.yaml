@@ -287,12 +287,22 @@ jobs:
              
              - name: Deploy to Dev environment
                run: |
-                 kubectl apply -f kubernetes/development
+                 kubectl apply -f kubernetes/development/deployment.yaml
+                 kubectl apply -f kubernetes/development/service.yaml
              
-             - name: Get deployments & services
-               run: |
-                 kubectl get deployments -n ${{ vars.NSPACE }}
-                 kubectl get svc -n ${{ vars.NSPACE }}
+    #          - name: Get deployments & services
+    #            run: |
+    #              kubectl get deployments -n ${{ vars.NSPACE }}
+    #              kubectl get svc -n ${{ vars.NSPACE }}
+
+    # Integration-testing:
+    #      name: Setting up Integration Testing
+    #      needs: Dev-deploy
+    #      runs-on: ubuntu-latest
+    #      steps:
+    #          - name: Test URL Output using CURL and JQ
+    #            run:
+
                  
                   
 
