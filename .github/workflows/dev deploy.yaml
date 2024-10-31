@@ -298,9 +298,9 @@ jobs:
              
              - name: check the Ingress
                run: |
-                 kubectl get secret ingress-local-tls -n ${{ vars.NSPACE }}
-                 kubectl create secret tls ingress-local-tls --cert=path/to/tls.crt --key=path/to/tls.key -n ${{ vars.NSPACE }}
                  
+                 kubectl create secret tls ingress-local-tls --cert=path/to/tls.crt --key=path/to/tls.key -n ${{ vars.NSPACE }}
+                 kubectl get secret ingress-local-tls -n ${{ vars.NSPACE }}
 
                  
 
