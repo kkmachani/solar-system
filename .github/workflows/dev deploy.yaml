@@ -290,10 +290,10 @@ jobs:
                  kubectl apply -f kubernetes/development/deployment.yaml
                  kubectl apply -f kubernetes/development/service.yaml
              
-    #          - name: Get deployments & services
-    #            run: |
-    #              kubectl get deployments -n ${{ vars.NSPACE }}
-    #              kubectl get svc -n ${{ vars.NSPACE }}
+             - name: Get deployments & services
+               run: |
+                 kubectl get deployments -n ${{ vars.NSPACE }}
+                 kubectl get svc -n ${{ vars.NSPACE }}
 
     # Integration-testing:
     #      name: Setting up Integration Testing
