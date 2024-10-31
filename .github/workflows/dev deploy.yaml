@@ -147,7 +147,7 @@ jobs:
              
              - name: Configure Kubeconfig
                run:  |
-                kubectl config view --minify
+                kubectl config use-context minikube
                 
 
              - name: Set Config file
