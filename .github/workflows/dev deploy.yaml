@@ -296,15 +296,13 @@ jobs:
                  kubectl get svc -n ${{ vars.NSPACE }}
 
              
-             - name: deployments & services
-               run: |
-                 kubectl get deployments -n ${{ vars.NSPACE }}
-                 kubectl get svc -n ${{ vars.NSPACE }}
-
              - name: check the Ingress
                run: |
-                 kubectl get secret ingress-local-tls -n develop
-                 kubectl get ingress -n develop
+                 kubectl get secret ingress-local-tls -n ${{ vars.NSPACE }}
+                 kubectl create secret tls ingress-local-tls --cert=path/to/tls.crt --key=path/to/tls.key -n ${{ vars.NSPACE }}
+                 
+
+                 
 
 
 
