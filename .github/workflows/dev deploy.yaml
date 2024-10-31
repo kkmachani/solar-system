@@ -301,6 +301,13 @@ jobs:
                  kubectl get deployments -n ${{ vars.NSPACE }}
                  kubectl get svc -n ${{ vars.NSPACE }}
 
+             - name: check the Ingress
+               run: |
+                 kubectl get secret ingress-local-tls -n develop
+                 kubectl get ingress -n develop
+
+
+
     # Integration-testing:
     #      name: Setting up Integration Testing
     #      needs: Dev-deploy
