@@ -6,10 +6,12 @@ metadata:
   name: solar-system
   namespace: develop
 spec:
+  type: NodePort  # Move type here
   ports:
   - port: 3000
     protocol: TCP
     targetPort: 3000
+    # Optionally specify a nodePort
+    # nodePort: 30007  # Uncomment if you want to specify a port
   selector:
-    app: solar-system 
-  type: NodePort
+    app: solar-system
